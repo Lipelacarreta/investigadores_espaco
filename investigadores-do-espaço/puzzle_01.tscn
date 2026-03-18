@@ -3,9 +3,16 @@
 [ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://puzzle_01.gd" id="1_md8hg"]
 [ext_resource type="Texture2D" uid="uid://cp1iufwv546im" path="res://icon.svg" id="1_uudgh"]
 [ext_resource type="Script" uid="uid://bwqk83he34p2h" path="res://button.gd" id="3_3gamc"]
+[ext_resource type="Script" uid="uid://bvqm7mxw32buk" path="res://personagem.gd" id="4_10eyb"]
 
-[node name="puzzle 01" type="Node2D" unique_id=536759026]
+[sub_resource type="LabelSettings" id="LabelSettings_3gamc"]
+
+[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "dica01", "dica02", "dica03")]
 script = ExtResource("1_md8hg")
+tempo_label = NodePath("Label")
+dica01 = NodePath("Dica01")
+dica02 = NodePath("Dica02")
+dica03 = NodePath("Dica03")
 
 [node name="A" type="TextureButton" parent="." unique_id=198351658]
 offset_left = 47.0
@@ -33,4 +40,69 @@ offset_right = 178.0
 offset_bottom = 375.0
 texture_normal = ExtResource("1_uudgh")
 script = ExtResource("3_3gamc")
+puzzle_path = NodePath("..")
+
+[node name="Label" type="Label" parent="." unique_id=493247956]
+offset_left = 1095.0
+offset_top = 11.0
+offset_right = 1135.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 20
+label_settings = SubResource("LabelSettings_3gamc")
+
+[node name="Dica01" type="TextureButton" parent="." unique_id=320493692]
+offset_left = 1004.0
+offset_top = 118.0
+offset_right = 1132.0
+offset_bottom = 246.0
+texture_normal = ExtResource("1_uudgh")
+
+[node name="Dica02" type="TextureButton" parent="." unique_id=511749036]
+offset_left = 1004.0
+offset_top = 268.0
+offset_right = 1132.0
+offset_bottom = 396.0
+texture_normal = ExtResource("1_uudgh")
+
+[node name="Dica03" type="TextureButton" parent="." unique_id=1381792701]
+offset_left = 1007.0
+offset_top = 415.0
+offset_right = 1135.0
+offset_bottom = 543.0
+texture_normal = ExtResource("1_uudgh")
+
+[node name="Personagem01" type="TextureButton" parent="." unique_id=596784542]
+offset_left = 268.0
+offset_top = 504.0
+offset_right = 396.0
+offset_bottom = 632.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("4_10eyb")
+puzzle_path = NodePath("..")
+
+[node name="Personagem02" type="TextureButton" parent="." unique_id=901192563]
+offset_left = 422.0
+offset_top = 504.0
+offset_right = 550.0
+offset_bottom = 632.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("4_10eyb")
+puzzle_path = NodePath("..")
+
+[node name="Personagem03" type="TextureButton" parent="." unique_id=1206011243]
+offset_left = 576.0
+offset_top = 504.0
+offset_right = 704.0
+offset_bottom = 632.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("4_10eyb")
+puzzle_path = NodePath("..")
+
+[node name="Personagem04" type="TextureButton" parent="." unique_id=481313059]
+offset_left = 728.0
+offset_top = 504.0
+offset_right = 856.0
+offset_bottom = 632.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("4_10eyb")
 puzzle_path = NodePath("..")
