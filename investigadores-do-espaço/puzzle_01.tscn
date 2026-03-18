@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cu1085jeqinw5"]
+
+[ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://puzzle_01.gd" id="1_md8hg"]
+[ext_resource type="Texture2D" uid="uid://cp1iufwv546im" path="res://icon.svg" id="1_uudgh"]
+
+[node name="puzzle 01" type="Node2D" unique_id=536759026]
+script = ExtResource("1_md8hg")
+tempo_inicial = 4
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=198351658]
+offset_left = 80.0
+offset_top = 55.0
+offset_right = 208.0
+offset_bottom = 183.0
+texture_normal = ExtResource("1_uudgh")
