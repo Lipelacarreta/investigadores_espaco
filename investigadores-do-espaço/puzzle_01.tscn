@@ -2,14 +2,35 @@
 
 [ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://puzzle_01.gd" id="1_md8hg"]
 [ext_resource type="Texture2D" uid="uid://cp1iufwv546im" path="res://icon.svg" id="1_uudgh"]
+[ext_resource type="Script" uid="uid://bwqk83he34p2h" path="res://button.gd" id="3_3gamc"]
 
 [node name="puzzle 01" type="Node2D" unique_id=536759026]
 script = ExtResource("1_md8hg")
-tempo_inicial = 4
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=198351658]
-offset_left = 80.0
-offset_top = 55.0
-offset_right = 208.0
-offset_bottom = 183.0
+[node name="A" type="TextureButton" parent="." unique_id=198351658]
+offset_left = 47.0
+offset_top = 87.0
+offset_right = 175.0
+offset_bottom = 215.0
 texture_normal = ExtResource("1_uudgh")
+script = ExtResource("3_3gamc")
+resposta_certa = true
+puzzle_path = NodePath("..")
+
+[node name="A2" type="TextureButton" parent="." unique_id=1847076564]
+offset_left = 54.0
+offset_top = 413.0
+offset_right = 182.0
+offset_bottom = 541.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("3_3gamc")
+puzzle_path = NodePath("..")
+
+[node name="A3" type="TextureButton" parent="." unique_id=1791655695]
+offset_left = 50.0
+offset_top = 247.0
+offset_right = 178.0
+offset_bottom = 375.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("3_3gamc")
+puzzle_path = NodePath("..")
