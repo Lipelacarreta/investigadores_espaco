@@ -15,10 +15,10 @@ dica02 = NodePath("Dica02")
 dica03 = NodePath("Dica03")
 
 [node name="A" type="TextureButton" parent="." unique_id=198351658]
-offset_left = 47.0
-offset_top = 87.0
-offset_right = 175.0
-offset_bottom = 215.0
+offset_left = 90.0
+offset_top = 81.0
+offset_right = 218.0
+offset_bottom = 209.0
 texture_normal = ExtResource("1_uudgh")
 script = ExtResource("3_3gamc")
 resposta_certa = true
