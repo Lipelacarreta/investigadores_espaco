@@ -2,24 +2,43 @@
 
 [ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://puzzle_01.gd" id="1_md8hg"]
 [ext_resource type="Texture2D" uid="uid://cp1iufwv546im" path="res://icon.svg" id="1_uudgh"]
+[ext_resource type="Texture2D" uid="uid://dc2imd72dr072" path="res://canva.png" id="2_lbp4s"]
 [ext_resource type="Script" uid="uid://bwqk83he34p2h" path="res://button.gd" id="3_3gamc"]
+[ext_resource type="Texture2D" uid="uid://d1k1srijx4l5e" path="res://godot_verm.png" id="3_sqdg0"]
 [ext_resource type="Script" uid="uid://bvqm7mxw32buk" path="res://personagem.gd" id="4_10eyb"]
+[ext_resource type="Texture2D" uid="uid://po02vyn2c3bv" path="res://godot_cinza.png" id="5_xxxow"]
+[ext_resource type="Script" uid="uid://fket7b0npgo7" path="res://botaodefechar_01.gd" id="8_cu8vn"]
+[ext_resource type="Script" uid="uid://cwv5fxdbb4avl" path="res://botaodefechar_02.gd" id="9_cg0m3"]
+[ext_resource type="Script" uid="uid://b5dux2wytvvjb" path="res://botaodefechar_03.gd" id="10_b3v17"]
+[ext_resource type="Script" uid="uid://ceycjyxowc0mu" path="res://botaodefechar_04.gd" id="11_hnbtd"]
+[ext_resource type="Texture2D" uid="uid://w6ema3wtpd73" path="res://f2bc6175-5c10-46e0-ba83-50109ed001e3.png" id="12_b3v17"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gamc"]
 
-[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "dica01", "dica02", "dica03")]
+[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "personagem01", "personagem02", "personagem03", "personagem04", "dica01", "dica02", "dica03", "popup01", "popup02", "popup03", "popup04", "popup_game_over")]
 script = ExtResource("1_md8hg")
 tempo_label = NodePath("Label")
+personagem01 = NodePath("Personagem01")
+personagem02 = NodePath("Personagem02")
+personagem03 = NodePath("Personagem03")
+personagem04 = NodePath("Personagem04")
 dica01 = NodePath("Dica01")
 dica02 = NodePath("Dica02")
 dica03 = NodePath("Dica03")
+popup01 = NodePath("Popup01")
+popup02 = NodePath("Popup02")
+popup03 = NodePath("Popup03")
+popup04 = NodePath("Popup04")
+popup_game_over = NodePath("Gameover")
 
 [node name="A" type="TextureButton" parent="." unique_id=198351658]
-offset_left = 90.0
-offset_top = 81.0
-offset_right = 218.0
-offset_bottom = 209.0
+offset_left = 49.0
+offset_top = 83.0
+offset_right = 177.0
+offset_bottom = 211.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("3_3gamc")
 resposta_certa = true
 puzzle_path = NodePath("..")
@@ -29,7 +48,9 @@ offset_left = 54.0
 offset_top = 413.0
 offset_right = 182.0
 offset_bottom = 541.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("3_3gamc")
 puzzle_path = NodePath("..")
 
@@ -38,7 +59,9 @@ offset_left = 50.0
 offset_top = 247.0
 offset_right = 178.0
 offset_bottom = 375.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("3_3gamc")
 puzzle_path = NodePath("..")
 
@@ -55,28 +78,38 @@ offset_left = 1004.0
 offset_top = 118.0
 offset_right = 1132.0
 offset_bottom = 246.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 
 [node name="Dica02" type="TextureButton" parent="." unique_id=511749036]
 offset_left = 1004.0
 offset_top = 268.0
 offset_right = 1132.0
 offset_bottom = 396.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+texture_disabled = ExtResource("5_xxxow")
 
 [node name="Dica03" type="TextureButton" parent="." unique_id=1381792701]
 offset_left = 1007.0
 offset_top = 415.0
 offset_right = 1135.0
 offset_bottom = 543.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+texture_disabled = ExtResource("5_xxxow")
 
 [node name="Personagem01" type="TextureButton" parent="." unique_id=596784542]
 offset_left = 268.0
 offset_top = 504.0
 offset_right = 396.0
 offset_bottom = 632.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("4_10eyb")
 puzzle_path = NodePath("..")
 
@@ -85,7 +118,9 @@ offset_left = 422.0
 offset_top = 504.0
 offset_right = 550.0
 offset_bottom = 632.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("4_10eyb")
 puzzle_path = NodePath("..")
 
@@ -94,7 +129,9 @@ offset_left = 576.0
 offset_top = 504.0
 offset_right = 704.0
 offset_bottom = 632.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("4_10eyb")
 puzzle_path = NodePath("..")
 
@@ -103,6 +140,142 @@ offset_left = 728.0
 offset_top = 504.0
 offset_right = 856.0
 offset_bottom = 632.0
+toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("4_10eyb")
 puzzle_path = NodePath("..")
+
+[node name="Popup01" type="Window" parent="." unique_id=1910645054]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="Planodefundo" type="TextureRect" parent="Popup01" unique_id=2046933609]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -334.0
+offset_right = 462.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lbp4s")
+stretch_mode = 6
+
+[node name="Botaodefechar01" type="TextureButton" parent="Popup01/Planodefundo" unique_id=860202858 node_paths=PackedStringArray("popup")]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 334.0
+offset_right = 590.0
+offset_bottom = 462.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("8_cu8vn")
+popup = NodePath("../..")
+
+[node name="Popup02" type="Window" parent="." unique_id=1509932264]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="Planodefundo2" type="TextureRect" parent="Popup02" unique_id=1010854131]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -334.0
+offset_right = 462.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lbp4s")
+stretch_mode = 6
+
+[node name="Botaodefechar02" type="TextureButton" parent="Popup02/Planodefundo2" unique_id=236139654 node_paths=PackedStringArray("popup")]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 334.0
+offset_right = 590.0
+offset_bottom = 462.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("9_cg0m3")
+popup = NodePath("../..")
+
+[node name="Popup03" type="Window" parent="." unique_id=2096532718]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="Planodefundo3" type="TextureRect" parent="Popup03" unique_id=1960071085]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -334.0
+offset_right = 462.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lbp4s")
+stretch_mode = 6
+
+[node name="Botaodefechar03" type="TextureButton" parent="Popup03/Planodefundo3" unique_id=1853763660 node_paths=PackedStringArray("popup")]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 334.0
+offset_right = 590.0
+offset_bottom = 462.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("10_b3v17")
+popup = NodePath("../..")
+
+[node name="Popup04" type="Window" parent="." unique_id=290654446]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="Planodefundo4" type="TextureRect" parent="Popup04" unique_id=1455664066]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -334.0
+offset_right = 462.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lbp4s")
+stretch_mode = 6
+
+[node name="Botaodefechar04" type="TextureButton" parent="Popup04/Planodefundo4" unique_id=744382772]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 334.0
+offset_right = 590.0
+offset_bottom = 462.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("11_hnbtd")
+
+[node name="Gameover" type="Window" parent="." unique_id=305402279]
+oversampling_override = 1.0
+mode = 3
+visible = false
+
+[node name="Planodefundo5" type="TextureRect" parent="Gameover" unique_id=806033482]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -334.0
+offset_right = 462.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_b3v17")
+stretch_mode = 6
+
+[node name="Botaoriniciar" type="TextureButton" parent="Gameover/Planodefundo5" unique_id=1659529631]
+layout_mode = 0
+offset_left = 972.0
+offset_top = 748.0
+offset_right = 1100.0
+offset_bottom = 876.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("11_hnbtd")
