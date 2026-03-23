@@ -19,9 +19,12 @@ extends Node2D
 @export var popup02: Window
 @export var popup03: Window
 @export var popup04: Window
-@export var popup_game_over: Window
+@export var popup_gameover: Window
 
-@export var textura_usado: Texture2D
+# 🪟 POPUPS DICAS
+@export var popup_dica01: Window
+@export var popup_dica02: Window
+@export var popup_dica03: Window
 
 # ⏱️ custos
 @export var custo01: float = 10.0
@@ -47,38 +50,27 @@ var dica_c_usada = false
 
 func _ready():
 	tempo_atual = tempo_inicial
-	
-	# UI tempo
+
 	if tempo_label:
 		tempo_label.add_theme_font_size_override("font_size", 80)
-		tempo_label.add_theme_color_override("font_color", Color.WHITE)
-		tempo_label.add_theme_color_override("font_outline_color", Color.BLACK)
-		tempo_label.add_theme_constant_override("outline_size", 5)
 
-	# personagens ativos
-	if personagem01: personagem01.disabled = false
-	if personagem02: personagem02.disabled = false
-	if personagem03: personagem03.disabled = false
-	if personagem04: personagem04.disabled = false
+	# esconder tudo
+	if popup_gameover: popup_gameover.hide()
 
-	# dicas progressivas
-	if dica01: dica01.disabled = false
+	if popup01: popup01.hide()
+	if popup02: popup02.hide()
+	if popup03: popup03.hide()
+	if popup04: popup04.hide()
+
+	if popup_dica01: popup_dica01.hide()
+	if popup_dica02: popup_dica02.hide()
+	if popup_dica03: popup_dica03.hide()
+
+	# bloquear dicas
 	if dica02: dica02.disabled = true
 	if dica03: dica03.disabled = true
 
-	# 🔥 CONFIGURA TODOS OS POPUPS CORRETAMENTE
-	configurar_popup(popup01)
-	configurar_popup(popup02)
-	configurar_popup(popup03)
-	configurar_popup(popup04)
-	configurar_popup(popup_game_over)
-
-	# 🔥 GARANTE QUE GAME OVER NÃO APARECE NO INÍCIO
-	if popup_game_over:
-		popup_game_over.visible = false
-		popup_game_over.hide()
-
-	# conectar botões
+	# conexões
 	if personagem01: personagem01.pressed.connect(_on_p1)
 	if personagem02: personagem02.pressed.connect(_on_p2)
 	if personagem03: personagem03.pressed.connect(_on_p3)
@@ -88,45 +80,30 @@ func _ready():
 	if dica02: dica02.pressed.connect(_on_dica02)
 	if dica03: dica03.pressed.connect(_on_dica03)
 
-# 🔥 FUNÇÃO CORRIGIDA PRA WINDOW
-func configurar_popup(popup: Window):
-	if popup:
-		popup.visible = false
-		popup.hide()
-		popup.borderless = true
-		popup.unresizable = true
-		popup.size = get_viewport_rect().size
-		popup.position = Vector2.ZERO
-		
-		popup.close_requested.connect(func(): popup.hide())
-
 func _process(delta):
 	if acabou:
 		return
 
 	tempo_atual -= delta
-	
+
 	if tempo_label:
 		tempo_label.text = formatar_tempo(tempo_atual)
 
-	if tempo_atual <= 16 and tempo_label:
-		tempo_label.modulate = Color(1, 0.2, 0.2)
-	else:
-		if tempo_label:
-			tempo_label.modulate = Color(1, 1, 1)
-
 	if tempo_atual <= 0:
 		tempo_atual = 0
-		if tempo_label:
-			tempo_label.text = "00:00"
 		game_over()
 
 func game_over():
-	acabou = true
-	print("GAME OVER")
+	if acabou:
+		return
 
-	if popup_game_over:
-		popup_game_over.popup()
+	acabou = true
+
+	if popup_gameover:
+		var tela = get_viewport_rect().size
+		popup_gameover.size = tela
+		popup_gameover.position = Vector2.ZERO
+		popup_gameover.popup()
 
 func formatar_tempo(t):
 	var segundos = int(t) % 60
@@ -134,68 +111,99 @@ func formatar_tempo(t):
 	return "%02d:%02d" % [minutos, segundos]
 
 # --------------------
-# PERSONAGENS
+# PERSONAGENS (CORRIGIDO 🔥)
 # --------------------
 
 func _on_p1():
 	if !usado01:
 		tempo_atual -= custo01
 		usado01 = true
-		if textura_usado and personagem01:
-			personagem01.texture_normal = textura_usado
-	
+		personagem01.texture_normal = personagem01.texture_pressed
+
 	if popup01:
+		var tela = get_viewport_rect().size
+		popup01.size = tela
+		popup01.position = Vector2.ZERO
 		popup01.popup()
 
 func _on_p2():
 	if !usado02:
 		tempo_atual -= custo02
 		usado02 = true
-		if textura_usado and personagem02:
-			personagem02.texture_normal = textura_usado
-	
+		personagem02.texture_normal = personagem02.texture_pressed
+
 	if popup02:
+		var tela = get_viewport_rect().size
+		popup02.size = tela
+		popup02.position = Vector2.ZERO
 		popup02.popup()
 
 func _on_p3():
 	if !usado03:
 		tempo_atual -= custo03
 		usado03 = true
-		if textura_usado and personagem03:
-			personagem03.texture_normal = textura_usado
-	
+		personagem03.texture_normal = personagem03.texture_pressed
+
 	if popup03:
+		var tela = get_viewport_rect().size
+		popup03.size = tela
+		popup03.position = Vector2.ZERO
 		popup03.popup()
 
 func _on_p4():
 	if !usado04:
 		tempo_atual -= custo04
 		usado04 = true
-		if textura_usado and personagem04:
-			personagem04.texture_normal = textura_usado
-	
+		personagem04.texture_normal = personagem04.texture_pressed
+
 	if popup04:
+		var tela = get_viewport_rect().size
+		popup04.size = tela
+		popup04.position = Vector2.ZERO
 		popup04.popup()
 
 # --------------------
-# DICAS
+# DICAS (CORRIGIDO 🔥)
 # --------------------
 
 func _on_dica01():
 	if !dica_a_usada:
 		tempo_atual -= custo_dica01
 		dica_a_usada = true
+		dica01.texture_normal = dica01.texture_pressed
+
 		if dica02:
 			dica02.disabled = false
+
+	if popup_dica01:
+		var tela = get_viewport_rect().size
+		popup_dica01.size = tela
+		popup_dica01.position = Vector2.ZERO
+		popup_dica01.popup()
 
 func _on_dica02():
 	if !dica_b_usada:
 		tempo_atual -= custo_dica02
 		dica_b_usada = true
+		dica02.texture_normal = dica02.texture_pressed
+
 		if dica03:
 			dica03.disabled = false
+
+	if popup_dica02:
+		var tela = get_viewport_rect().size
+		popup_dica02.size = tela
+		popup_dica02.position = Vector2.ZERO
+		popup_dica02.popup()
 
 func _on_dica03():
 	if !dica_c_usada:
 		tempo_atual -= custo_dica03
 		dica_c_usada = true
+		dica03.texture_normal = dica03.texture_pressed
+
+	if popup_dica03:
+		var tela = get_viewport_rect().size
+		popup_dica03.size = tela
+		popup_dica03.position = Vector2.ZERO
+		popup_dica03.popup()

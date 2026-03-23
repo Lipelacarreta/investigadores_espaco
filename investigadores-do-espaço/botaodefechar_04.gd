@@ -1,4 +1,7 @@
 extends TextureButton
 
+@export var popup: Window
+
 func _pressed():
-	get_tree().reload_current_scene()
+	if popup:
+		popup.hide()

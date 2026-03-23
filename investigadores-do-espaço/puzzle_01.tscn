@@ -6,18 +6,20 @@
 [ext_resource type="Script" uid="uid://bwqk83he34p2h" path="res://button.gd" id="3_3gamc"]
 [ext_resource type="Texture2D" uid="uid://d1k1srijx4l5e" path="res://godot_verm.png" id="3_sqdg0"]
 [ext_resource type="Script" uid="uid://bvqm7mxw32buk" path="res://personagem.gd" id="4_10eyb"]
+[ext_resource type="Script" uid="uid://5n5dc3dmuyqj" path="res://botaodefechar_d_01.gd" id="5_cg0m3"]
 [ext_resource type="Texture2D" uid="uid://po02vyn2c3bv" path="res://godot_cinza.png" id="5_xxxow"]
+[ext_resource type="Script" uid="uid://uuf04yr6kre1" path="res://botaodefechar_d_02.gd" id="6_hnbtd"]
+[ext_resource type="Script" uid="uid://kgtmaj3mxfoa" path="res://botaodefechar_d_03.gd" id="7_hbyww"]
 [ext_resource type="Script" uid="uid://fket7b0npgo7" path="res://botaodefechar_01.gd" id="8_cu8vn"]
 [ext_resource type="Script" uid="uid://cwv5fxdbb4avl" path="res://botaodefechar_02.gd" id="9_cg0m3"]
 [ext_resource type="Script" uid="uid://b5dux2wytvvjb" path="res://botaodefechar_03.gd" id="10_b3v17"]
 [ext_resource type="Script" uid="uid://ceycjyxowc0mu" path="res://botaodefechar_04.gd" id="11_hnbtd"]
-[ext_resource type="Texture2D" uid="uid://w6ema3wtpd73" path="res://f2bc6175-5c10-46e0-ba83-50109ed001e3.png" id="12_b3v17"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gamc"]
 
-[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "personagem01", "personagem02", "personagem03", "personagem04", "dica01", "dica02", "dica03", "popup01", "popup02", "popup03", "popup04", "popup_game_over")]
+[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "personagem01", "personagem02", "personagem03", "personagem04", "dica01", "dica02", "dica03", "popup01", "popup02", "popup03", "popup04", "popup_gameover", "popup_dica01", "popup_dica02", "popup_dica03")]
 script = ExtResource("1_md8hg")
-tempo_label = NodePath("Label")
+tempo_label = NodePath("Tempo")
 personagem01 = NodePath("Personagem01")
 personagem02 = NodePath("Personagem02")
 personagem03 = NodePath("Personagem03")
@@ -29,7 +31,10 @@ popup01 = NodePath("Popup01")
 popup02 = NodePath("Popup02")
 popup03 = NodePath("Popup03")
 popup04 = NodePath("Popup04")
-popup_game_over = NodePath("Gameover")
+popup_gameover = NodePath("Gameover")
+popup_dica01 = NodePath("popup_dica01")
+popup_dica02 = NodePath("popup_dica02")
+popup_dica03 = NodePath("popup_dica03")
 
 [node name="A" type="TextureButton" parent="." unique_id=198351658]
 offset_left = 49.0
@@ -65,13 +70,82 @@ texture_pressed = ExtResource("3_sqdg0")
 script = ExtResource("3_3gamc")
 puzzle_path = NodePath("..")
 
-[node name="Label" type="Label" parent="." unique_id=493247956]
+[node name="Tempo" type="Label" parent="." unique_id=493247956]
 offset_left = 1095.0
 offset_top = 11.0
 offset_right = 1135.0
 offset_bottom = 34.0
 theme_override_font_sizes/font_size = 20
 label_settings = SubResource("LabelSettings_3gamc")
+
+[node name="popup_dica01" type="Window" parent="." unique_id=652388619]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="texto_dica01" type="Label" parent="popup_dica01" unique_id=2080475385]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 370.0
+offset_top = 86.0
+offset_right = 672.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "TEXTO DICA"
+
+[node name="BotaodefecharD01" type="TextureButton" parent="popup_dica01" unique_id=1518292275]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("5_cg0m3")
+
+[node name="popup_dica02" type="Window" parent="." unique_id=307640595]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="texto_dica02" type="Label" parent="popup_dica02" unique_id=939268301]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 386.0
+offset_top = 117.0
+offset_right = 688.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "TEXTO DICA"
+
+[node name="BotaodefecharD02" type="TextureButton" parent="popup_dica02" unique_id=264795660]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("6_hnbtd")
+
+[node name="popup_dica03" type="Window" parent="." unique_id=1290852659]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+
+[node name="texto_dica03" type="Label" parent="popup_dica03" unique_id=1084883219]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3338.0
+offset_top = 1338.0
+offset_right = 3640.0
+offset_bottom = 1338.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "TEXTO DICA"
+
+[node name="BotaodefecharD03" type="TextureButton" parent="popup_dica03" unique_id=1599740240]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("7_hbyww")
 
 [node name="Dica01" type="TextureButton" parent="." unique_id=320493692]
 offset_left = 1004.0
@@ -258,24 +332,23 @@ oversampling_override = 1.0
 mode = 3
 visible = false
 
-[node name="Planodefundo5" type="TextureRect" parent="Gameover" unique_id=806033482]
+[node name="Botaoriniciar" type="TextureButton" parent="Gameover" unique_id=1659529631]
+offset_left = 521.0
+offset_top = 369.0
+offset_right = 649.0
+offset_bottom = 497.0
+texture_normal = ExtResource("1_uudgh")
+script = ExtResource("11_hnbtd")
+
+[node name="TextoGameOver" type="Label" parent="Gameover" unique_id=1970440563]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -334.0
-offset_right = 462.0
-offset_bottom = 334.0
+offset_left = 523.0
+offset_top = 161.0
+offset_right = 523.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_b3v17")
-stretch_mode = 6
-
-[node name="Botaoriniciar" type="TextureButton" parent="Gameover/Planodefundo5" unique_id=1659529631]
-layout_mode = 0
-offset_left = 972.0
-offset_top = 748.0
-offset_right = 1100.0
-offset_bottom = 876.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("11_hnbtd")
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
