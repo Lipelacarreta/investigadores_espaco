@@ -1,354 +1,655 @@
 [gd_scene format=3 uid="uid://cu1085jeqinw5"]
 
-[ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://puzzle_01.gd" id="1_md8hg"]
+[ext_resource type="Script" uid="uid://dbebcoqstid3o" path="res://global.gd" id="1_md8hg"]
 [ext_resource type="Texture2D" uid="uid://cp1iufwv546im" path="res://icon.svg" id="1_uudgh"]
-[ext_resource type="Texture2D" uid="uid://dc2imd72dr072" path="res://canva.png" id="2_lbp4s"]
-[ext_resource type="Script" uid="uid://bwqk83he34p2h" path="res://button.gd" id="3_3gamc"]
 [ext_resource type="Texture2D" uid="uid://d1k1srijx4l5e" path="res://godot_verm.png" id="3_sqdg0"]
-[ext_resource type="Script" uid="uid://bvqm7mxw32buk" path="res://personagem.gd" id="4_10eyb"]
-[ext_resource type="Script" uid="uid://5n5dc3dmuyqj" path="res://botaodefechar_d_01.gd" id="5_cg0m3"]
 [ext_resource type="Texture2D" uid="uid://po02vyn2c3bv" path="res://godot_cinza.png" id="5_xxxow"]
-[ext_resource type="Script" uid="uid://uuf04yr6kre1" path="res://botaodefechar_d_02.gd" id="6_hnbtd"]
-[ext_resource type="Script" uid="uid://kgtmaj3mxfoa" path="res://botaodefechar_d_03.gd" id="7_hbyww"]
-[ext_resource type="Script" uid="uid://fket7b0npgo7" path="res://botaodefechar_01.gd" id="8_cu8vn"]
-[ext_resource type="Script" uid="uid://cwv5fxdbb4avl" path="res://botaodefechar_02.gd" id="9_cg0m3"]
-[ext_resource type="Script" uid="uid://b5dux2wytvvjb" path="res://botaodefechar_03.gd" id="10_b3v17"]
-[ext_resource type="Script" uid="uid://ceycjyxowc0mu" path="res://botaodefechar_04.gd" id="11_hnbtd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gamc"]
 
-[node name="puzzle 01" type="Node2D" unique_id=536759026 node_paths=PackedStringArray("tempo_label", "personagem01", "personagem02", "personagem03", "personagem04", "dica01", "dica02", "dica03", "popup01", "popup02", "popup03", "popup04", "popup_gameover", "popup_dica01", "popup_dica02", "popup_dica03")]
+[sub_resource type="GDScript" id="GDScript_10eyb"]
+script/source = "extends CanvasLayer
+
+func _ready() -> void:
+	visible = false
+
+func _on_resume_btn_pressed() -> void:
+	visible = false
+"
+
+[sub_resource type="Theme" id="Theme_cg0m3"]
+
+[sub_resource type="Theme" id="Theme_b3v17"]
+
+[node name="puzzle 01" type="Node2D" unique_id=536759026]
 script = ExtResource("1_md8hg")
-tempo_label = NodePath("Tempo")
-personagem01 = NodePath("Personagem01")
-personagem02 = NodePath("Personagem02")
-personagem03 = NodePath("Personagem03")
-personagem04 = NodePath("Personagem04")
-dica01 = NodePath("Dica01")
-dica02 = NodePath("Dica02")
-dica03 = NodePath("Dica03")
-popup01 = NodePath("Popup01")
-popup02 = NodePath("Popup02")
-popup03 = NodePath("Popup03")
-popup04 = NodePath("Popup04")
-popup_gameover = NodePath("Gameover")
-popup_dica01 = NodePath("popup_dica01")
-popup_dica02 = NodePath("popup_dica02")
-popup_dica03 = NodePath("popup_dica03")
+custo_altern_c = 0.0
 
-[node name="A" type="TextureButton" parent="." unique_id=198351658]
-offset_left = 49.0
-offset_top = 83.0
-offset_right = 177.0
-offset_bottom = 211.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("3_3gamc")
-resposta_certa = true
-puzzle_path = NodePath("..")
+[node name="Node" type="Node" parent="." unique_id=1371730557]
 
-[node name="A2" type="TextureButton" parent="." unique_id=1847076564]
-offset_left = 54.0
-offset_top = 413.0
-offset_right = 182.0
-offset_bottom = 541.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("3_3gamc")
-puzzle_path = NodePath("..")
-
-[node name="A3" type="TextureButton" parent="." unique_id=1791655695]
-offset_left = 50.0
-offset_top = 247.0
-offset_right = 178.0
-offset_bottom = 375.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("3_3gamc")
-puzzle_path = NodePath("..")
-
-[node name="Tempo" type="Label" parent="." unique_id=493247956]
-offset_left = 1095.0
-offset_top = 11.0
-offset_right = 1135.0
-offset_bottom = 34.0
+[node name="tempo" type="Label" parent="." unique_id=493247956]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1060.0
+offset_top = 14.0
+offset_right = 1100.0
+offset_bottom = 37.0
+grow_horizontal = 0
+scale = Vector2(1.7915573, 1.7915573)
 theme_override_font_sizes/font_size = 20
 label_settings = SubResource("LabelSettings_3gamc")
 
-[node name="popup_dica01" type="Window" parent="." unique_id=652388619]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
+[node name="dicas" type="Node" parent="." unique_id=142983376]
 
-[node name="texto_dica01" type="Label" parent="popup_dica01" unique_id=2080475385]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 370.0
-offset_top = 86.0
-offset_right = 672.0
-offset_bottom = 86.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-text = "TEXTO DICA"
-
-[node name="BotaodefecharD01" type="TextureButton" parent="popup_dica01" unique_id=1518292275]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("5_cg0m3")
-
-[node name="popup_dica02" type="Window" parent="." unique_id=307640595]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-
-[node name="texto_dica02" type="Label" parent="popup_dica02" unique_id=939268301]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 386.0
-offset_top = 117.0
-offset_right = 688.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-text = "TEXTO DICA"
-
-[node name="BotaodefecharD02" type="TextureButton" parent="popup_dica02" unique_id=264795660]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("6_hnbtd")
-
-[node name="popup_dica03" type="Window" parent="." unique_id=1290852659]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-
-[node name="texto_dica03" type="Label" parent="popup_dica03" unique_id=1084883219]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3338.0
-offset_top = 1338.0
-offset_right = 3640.0
-offset_bottom = 1338.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 70
-text = "TEXTO DICA"
-
-[node name="BotaodefecharD03" type="TextureButton" parent="popup_dica03" unique_id=1599740240]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("7_hbyww")
-
-[node name="Dica01" type="TextureButton" parent="." unique_id=320493692]
+[node name="dica01_btn" type="TextureButton" parent="dicas" unique_id=320493692]
 offset_left = 1004.0
 offset_top = 118.0
 offset_right = 1132.0
 offset_bottom = 246.0
-toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
 texture_pressed = ExtResource("3_sqdg0")
 
-[node name="Dica02" type="TextureButton" parent="." unique_id=511749036]
+[node name="dica02_btn" type="TextureButton" parent="dicas" unique_id=511749036]
 offset_left = 1004.0
 offset_top = 268.0
 offset_right = 1132.0
 offset_bottom = 396.0
-toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
 texture_pressed = ExtResource("3_sqdg0")
 texture_disabled = ExtResource("5_xxxow")
 
-[node name="Dica03" type="TextureButton" parent="." unique_id=1381792701]
+[node name="dica03_btn" type="TextureButton" parent="dicas" unique_id=1381792701]
 offset_left = 1007.0
 offset_top = 415.0
 offset_right = 1135.0
 offset_bottom = 543.0
-toggle_mode = true
 texture_normal = ExtResource("1_uudgh")
 texture_pressed = ExtResource("3_sqdg0")
 texture_disabled = ExtResource("5_xxxow")
 
-[node name="Personagem01" type="TextureButton" parent="." unique_id=596784542]
-offset_left = 268.0
-offset_top = 504.0
-offset_right = 396.0
-offset_bottom = 632.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("4_10eyb")
-puzzle_path = NodePath("..")
+[node name="dica01" type="CanvasLayer" parent="dicas" unique_id=386014823]
+visible = false
+script = SubResource("GDScript_10eyb")
 
-[node name="Personagem02" type="TextureButton" parent="." unique_id=901192563]
-offset_left = 422.0
-offset_top = 504.0
-offset_right = 550.0
-offset_bottom = 632.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("4_10eyb")
-puzzle_path = NodePath("..")
-
-[node name="Personagem03" type="TextureButton" parent="." unique_id=1206011243]
-offset_left = 576.0
-offset_top = 504.0
-offset_right = 704.0
-offset_bottom = 632.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("4_10eyb")
-puzzle_path = NodePath("..")
-
-[node name="Personagem04" type="TextureButton" parent="." unique_id=481313059]
-offset_left = 728.0
-offset_top = 504.0
-offset_right = 856.0
-offset_bottom = 632.0
-toggle_mode = true
-texture_normal = ExtResource("1_uudgh")
-texture_pressed = ExtResource("3_sqdg0")
-script = ExtResource("4_10eyb")
-puzzle_path = NodePath("..")
-
-[node name="Popup01" type="Window" parent="." unique_id=1910645054]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-
-[node name="Planodefundo" type="TextureRect" parent="Popup01" unique_id=2046933609]
+[node name="ColorRect" type="ColorRect" parent="dicas/dica01" unique_id=1790495660]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -334.0
-offset_right = 462.0
-offset_bottom = 334.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lbp4s")
-stretch_mode = 6
+color = Color(0.3647059, 1, 1, 0.44313726)
 
-[node name="Botaodefechar01" type="TextureButton" parent="Popup01/Planodefundo" unique_id=860202858 node_paths=PackedStringArray("popup")]
-layout_mode = 0
-offset_left = 462.0
-offset_top = 334.0
-offset_right = 590.0
-offset_bottom = 462.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("8_cu8vn")
-popup = NodePath("../..")
+[node name="menu_holder" type="VBoxContainer" parent="dicas/dica01" unique_id=956719503]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="Popup02" type="Window" parent="." unique_id=1509932264]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
+[node name="resume_btn" type="Button" parent="dicas/dica01" unique_id=1363394181]
+process_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_cg0m3")
+text = "FECHAR"
 
-[node name="Planodefundo2" type="TextureRect" parent="Popup02" unique_id=1010854131]
+[node name="Label" type="Label" parent="dicas/dica01" unique_id=2001217004]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "DICA 01"
+
+[node name="dica02" type="CanvasLayer" parent="dicas" unique_id=865842474]
+visible = false
+script = SubResource("GDScript_10eyb")
+
+[node name="ColorRect" type="ColorRect" parent="dicas/dica02" unique_id=1793151791]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -334.0
-offset_right = 462.0
-offset_bottom = 334.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lbp4s")
-stretch_mode = 6
+color = Color(0.3647059, 1, 1, 0.44313726)
 
-[node name="Botaodefechar02" type="TextureButton" parent="Popup02/Planodefundo2" unique_id=236139654 node_paths=PackedStringArray("popup")]
-layout_mode = 0
-offset_left = 462.0
-offset_top = 334.0
-offset_right = 590.0
-offset_bottom = 462.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("9_cg0m3")
-popup = NodePath("../..")
+[node name="menu_holder" type="VBoxContainer" parent="dicas/dica02" unique_id=1892560800]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="Popup03" type="Window" parent="." unique_id=2096532718]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
+[node name="resume_btn" type="Button" parent="dicas/dica02" unique_id=344348772]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_cg0m3")
+text = "FECHAR"
 
-[node name="Planodefundo3" type="TextureRect" parent="Popup03" unique_id=1960071085]
+[node name="Label" type="Label" parent="dicas/dica02" unique_id=1038302769]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "DICA 02"
+
+[node name="dica03" type="CanvasLayer" parent="dicas" unique_id=1543052692]
+visible = false
+script = SubResource("GDScript_10eyb")
+
+[node name="ColorRect" type="ColorRect" parent="dicas/dica03" unique_id=62253649]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -334.0
-offset_right = 462.0
-offset_bottom = 334.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lbp4s")
-stretch_mode = 6
+color = Color(0.3647059, 1, 1, 0.44313726)
 
-[node name="Botaodefechar03" type="TextureButton" parent="Popup03/Planodefundo3" unique_id=1853763660 node_paths=PackedStringArray("popup")]
-layout_mode = 0
-offset_left = 462.0
-offset_top = 334.0
-offset_right = 590.0
-offset_bottom = 462.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("10_b3v17")
-popup = NodePath("../..")
-
-[node name="Popup04" type="Window" parent="." unique_id=290654446]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-
-[node name="Planodefundo4" type="TextureRect" parent="Popup04" unique_id=1455664066]
-anchors_preset = 15
+[node name="menu_holder" type="VBoxContainer" parent="dicas/dica03" unique_id=1042049422]
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -462.0
-offset_top = -334.0
-offset_right = 462.0
-offset_bottom = 334.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lbp4s")
-stretch_mode = 6
+size_flags_horizontal = 3
 
-[node name="Botaodefechar04" type="TextureButton" parent="Popup04/Planodefundo4" unique_id=744382772]
-layout_mode = 0
-offset_left = 462.0
-offset_top = 334.0
-offset_right = 590.0
-offset_bottom = 462.0
+[node name="resume_btn" type="Button" parent="dicas/dica03" unique_id=1854696877]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_cg0m3")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="dicas/dica03" unique_id=89276828]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "DICA 03"
+
+[node name="inventarios" type="Node" parent="." unique_id=52246172]
+
+[node name="invent_ga10_btn" type="TextureButton" parent="inventarios" unique_id=507364283]
+offset_left = 277.0
+offset_top = 502.0
+offset_right = 405.0
+offset_bottom = 630.0
 texture_normal = ExtResource("1_uudgh")
-script = ExtResource("11_hnbtd")
+texture_pressed = ExtResource("3_sqdg0")
 
-[node name="Gameover" type="Window" parent="." unique_id=305402279]
-oversampling_override = 1.0
-mode = 3
+[node name="invent_ga10" type="CanvasLayer" parent="inventarios" unique_id=1068353768]
 visible = false
 
-[node name="Botaoriniciar" type="TextureButton" parent="Gameover" unique_id=1659529631]
-offset_left = 521.0
-offset_top = 369.0
-offset_right = 649.0
-offset_bottom = 497.0
-texture_normal = ExtResource("1_uudgh")
-script = ExtResource("11_hnbtd")
-
-[node name="TextoGameOver" type="Label" parent="Gameover" unique_id=1970440563]
+[node name="ColorRect" type="ColorRect" parent="inventarios/invent_ga10" unique_id=898755859]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 523.0
-offset_top = 161.0
-offset_right = 523.0
-offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 70
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="inventarios/invent_ga10" unique_id=530831291]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="inventarios/invent_ga10" unique_id=1646820476]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="inventarios/invent_ga10" unique_id=955725675]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "INVENTÁRIO GA10"
+
+[node name="invent_astro_btn" type="TextureButton" parent="inventarios" unique_id=1096775480]
+offset_left = 442.0
+offset_top = 502.0
+offset_right = 570.0
+offset_bottom = 630.0
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="invent_astro" type="CanvasLayer" parent="inventarios" unique_id=69459931]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="inventarios/invent_astro" unique_id=1508105071]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="inventarios/invent_astro" unique_id=725423740]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="inventarios/invent_astro" unique_id=1749098818]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="inventarios/invent_astro" unique_id=2037738801]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "INVENTÁRIO ASTRO"
+
+[node name="invent_otelo_btn" type="TextureButton" parent="inventarios" unique_id=1791265696]
+offset_left = 607.0
+offset_top = 506.0
+offset_right = 735.0
+offset_bottom = 634.0
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="invent_otelo" type="CanvasLayer" parent="inventarios" unique_id=1245650549]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="inventarios/invent_otelo" unique_id=1380151817]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="inventarios/invent_otelo" unique_id=569923556]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="inventarios/invent_otelo" unique_id=800464494]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="inventarios/invent_otelo" unique_id=1711171963]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "INVENTÁRIO OTELO"
+
+[node name="invent_gala_btn" type="TextureButton" parent="inventarios" unique_id=398603674]
+offset_left = 767.0
+offset_top = 519.0
+offset_right = 895.0
+offset_bottom = 647.0
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="invent_gala" type="CanvasLayer" parent="inventarios" unique_id=1525843791]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="inventarios/invent_gala" unique_id=172248687]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="inventarios/invent_gala" unique_id=373677338]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="inventarios/invent_gala" unique_id=1477870926]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="inventarios/invent_gala" unique_id=1658944116]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "INVENTÁRIO GALA"
+
+[node name="alternativas" type="Node" parent="." unique_id=1196404574]
+
+[node name="altern_a_btn" type="TextureButton" parent="alternativas" unique_id=1967037283]
+offset_left = 103.00001
+offset_top = 89.000015
+offset_right = 231.0
+offset_bottom = 217.00002
+scale = Vector2(1.6800001, 1.6800001)
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="altern_a" type="CanvasLayer" parent="alternativas" unique_id=2135984210]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="alternativas/altern_a" unique_id=1721891761]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="alternativas/altern_a" unique_id=311990759]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="alternativas/altern_a" unique_id=921208707]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="alternativas/altern_a" unique_id=2142028774]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "Alternativa incorreta!"
+
+[node name="altern_b_btn" type="TextureButton" parent="alternativas" unique_id=675253810]
+offset_left = 359.0
+offset_top = 167.00002
+offset_right = 487.0
+offset_bottom = 295.0
+scale = Vector2(1.6800001, 1.6800001)
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="altern_b" type="CanvasLayer" parent="alternativas" unique_id=2081290067]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="alternativas/altern_b" unique_id=1407255899]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="alternativas/altern_b" unique_id=1004829717]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="resume_btn" type="Button" parent="alternativas/altern_b" unique_id=2047878070]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "FECHAR"
+
+[node name="Label" type="Label" parent="alternativas/altern_b" unique_id=1279858401]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "Alternativa incorreta!"
+
+[node name="altern_c_btn" type="TextureButton" parent="alternativas" unique_id=143051289]
+offset_left = 635.0
+offset_top = 93.000015
+offset_right = 763.0
+offset_bottom = 221.00002
+scale = Vector2(1.6800001, 1.6800001)
+texture_normal = ExtResource("1_uudgh")
+texture_pressed = ExtResource("3_sqdg0")
+
+[node name="altern_c" type="CanvasLayer" parent="alternativas" unique_id=2074943165]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="alternativas/altern_c" unique_id=1258049171]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="menu_holder" type="VBoxContainer" parent="alternativas/altern_c" unique_id=1022341955]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="reiniciar_btn" type="Button" parent="alternativas/altern_c" unique_id=1403014942]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 251.0
+offset_bottom = 282.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "REINICIAR"
+
+[node name="Label" type="Label" parent="alternativas/altern_c" unique_id=1397465845]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
+text = "Alternativa correta!"
+
+[node name="gameover" type="CanvasLayer" parent="." unique_id=1088118457]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="gameover" unique_id=1858997067]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="menu_holder" type="VBoxContainer" parent="gameover" unique_id=1634555065]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="reiniciar_btn" type="Button" parent="gameover" unique_id=227423436]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 251.0
+offset_bottom = 282.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = SubResource("Theme_b3v17")
+text = "REINICIAR"
+
+[node name="Label" type="Label" parent="gameover" unique_id=1533467309]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.99994
+offset_top = -179.99995
+offset_right = -191.99994
+offset_bottom = -156.99995
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.56, 3.56)
 text = "GAME OVER"
+
+[connection signal="pressed" from="dicas/dica01_btn" to="." method="_on_dica_01_btn_pressed"]
+[connection signal="pressed" from="dicas/dica02_btn" to="." method="_on_dica_02_btn_pressed"]
+[connection signal="pressed" from="dicas/dica03_btn" to="." method="_on_dica_03_btn_pressed"]
+[connection signal="pressed" from="dicas/dica01/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="dicas/dica02/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="dicas/dica03/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_ga10_btn" to="." method="_on_invent_ga_10_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_ga10/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_astro_btn" to="." method="_on_invent_astro_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_astro/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_otelo_btn" to="." method="_on_invent_otelo_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_otelo/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_gala_btn" to="." method="_on_invent_gala_btn_pressed"]
+[connection signal="pressed" from="inventarios/invent_gala/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_a_btn" to="." method="_on_altern_a_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_a/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_b_btn" to="." method="_on_altern_b_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_b/resume_btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_c_btn" to="." method="_on_altern_c_btn_pressed"]
+[connection signal="pressed" from="alternativas/altern_c/reiniciar_btn" to="." method="_on_reiniciar_btn_pressed"]
+[connection signal="pressed" from="gameover/reiniciar_btn" to="." method="_on_reiniciar_btn_pressed"]
